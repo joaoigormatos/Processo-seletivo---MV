@@ -1,0 +1,55 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Novo Estabecimento</h1>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="estabelecimento.nome"
+          #nome="ngModel" required minlength="5">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Endereço</label>
+        <input pInputText type="text" name="endereco"
+          [(ngModel)]="estabelecimento.endereco"
+          #endereco="ngModel" required>
+
+        <app-message [control]="endereco" error="required"
+          text="Informe o endereco"></app-message>
+      </div>
+
+
+      <div class="p-col-12 p-fluid">
+        <label>Telefone</label>
+        <input pInputText type="text" name="telefone"
+        [(ngModel)]="estabelecimento.telefone"
+        #telefone="ngModel" required
+        >
+        <app-message [control]="telefone" error="required"
+        text="Informe o telefone"></app-message>
+      </div>
+
+
+
+      <div class="p-col-12 cadastro-acoes">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="p-button-info"
+          (click)="nova(f)"></button>
+
+        <a routerLink="/estabelecimentos">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+
+</div>

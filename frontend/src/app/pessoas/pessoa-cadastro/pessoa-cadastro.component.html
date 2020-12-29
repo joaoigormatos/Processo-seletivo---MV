@@ -1,0 +1,72 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Novo Profissional</h1>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="pessoa.nome"
+          #nome="ngModel" required minlength="5">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Endereço</label>
+        <input pInputText type="text" name="logradouro"
+          [(ngModel)]="pessoa.endereco"
+          #logradouro="ngModel" required>
+
+        <app-message [control]="logradouro" error="required"
+          text="Informe o logradouro"></app-message>
+      </div>
+
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Telefone Celular</label>
+        <input pInputText type="text" name="complemento"
+        [(ngModel)]="pessoa.telefone.celular">
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Telefone Residencial</label>
+        <input pInputText type="text" name="bairro"
+          [(ngModel)]="pessoa.telefone.residencial"
+          #bairro="ngModel" required>
+
+        <app-message [control]="bairro" error="required"
+          text="Informe o bairro"></app-message>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Funcao</label>
+        <input pInputText type="text" name="logradouro"
+          [(ngModel)]="pessoa.funcao"
+          #logradouro="ngModel" required>
+
+        <app-message [control]="logradouro" error="required"
+          text="Informe o logradouro"></app-message>
+      </div>
+
+
+
+
+      <div class="p-col-12 cadastro-acoes">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="p-button-info"
+          (click)="nova(f)"></button>
+
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+
+</div>
